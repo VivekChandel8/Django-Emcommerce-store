@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+	<title>FASHE::Online Fashion Store</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{path}}images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{path}}css/util.css">
+	<link rel="stylesheet" type="text/css" href="{{path}}css/main.css">
+<!--===============================================================================================-->
+	<style>
+ #btn
+  {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+  }
+
+#btn:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+ </style>
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="#" class="topbar-social-item fa fa-facebook"></a>
+					<a href="#" class="topbar-social-item fa fa-instagram"></a>
+					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+				</div>
+
+				<span class="topbar-child1">
+					Free shipping for standard order over $100
+				</span>
+
+				<div class="topbar-child2">
+					<span class="topbar-email">
+						fashe@onlinestore.com
+					</span>
+				</div>
+			</div>
+
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="http://localhost:8000" class="logo">
+					<img src="{{path}}images/icons/logo.png" alt="IMG-LOGO">
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+							<li class="sale-noti">
+
+								<a href="http://localhost:8000/">Home</a>
+							</li>
+
+							<li>
+								<a href="http://localhost:8000/shop/">Shop</a>
+							</li>
+							<li>
+								<a href="http://localhost:8000/cartpage/">Cart</a>
+							</li>
+
+							<li>
+								<a href="http://localhost:8000/blog">Blog</a>
+							</li>
+
+							<li>
+								<a href="http://localhost:8000/about">About</a>
+							</li>
+
+							<li>
+								<a href="http://localhost:8000/contact">Contact</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					{% if   request.session.uid  %}
+					   <p>Welcome!!! {{ request.session.uid }}</p>
+					   <form  action="http://localhost:8000/logout/" method="post">
+						   {% csrf_token %}
+						  &nbsp; <button type="submit"  id="btn">logout</button>
+					   </form>
+                     {% else %}
+
+					   <a href="http://localhost:8000/login" class="header-wrapicon1 dis-block">
+						 <img src="{{path}}images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					     </a>
+					   <p>welcome guest</p>
+                     {% endif %}
+					<span class="linedivide1"></span>
+
+					<div class="header-wrapicon2">
+						<a href="http://localhost:8000/cartpage"><img src="{{path}}images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON"></a>
+						<span class="header-icons-noti">{{ request.session.cartquan }}</span>
+
+						<!-- Header cart noti -->
+							</ul></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+
+			<!-- Logo moblie -->
+			<a href="http://localhost:8000" class="logo-mobile">
+				<img src="{{path}}images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="{{path}}images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+
+					<span class="linedivide2"></span>
+
+					<div class="header-wrapicon2">
+						<img src="{{path}}images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<span class="header-icons-noti">0</span>
+
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<ul class="header-cart-wrapitem">
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="{{path}}images/item-cart-01.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											White Shirt With Pleat Detail Back
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $19.00
+										</span>
+									</div>
+								</li>
+
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="{{path}}images/item-cart-02.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											Converse All Star Hi Black Canvas
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $39.00
+										</span>
+									</div>
+								</li>
+
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="{{path}}images/item-cart-03.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											Nixon Porter Leather Watch In Tan
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $17.00
+										</span>
+									</div>
+								</li>
+							</ul>
+
+							<div class="header-cart-total">
+								Total: $75.00
+							</div>
+
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Cart
+									</a>
+								</div>
+
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										Check Out
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu" >
+			<nav class="side-menu">
+				<ul class="main-menu">
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over $100
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								fashe@example.com
+							</span>
+
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<a href="#" class="topbar-social-item fa fa-facebook"></a>
+							<a href="#" class="topbar-social-item fa fa-instagram"></a>
+							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+						</div>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000">Home</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000/shop">Shop</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000/cartpage">Cart</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000/blog">Blog</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000/about">About</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="http://localhost:8000/contact">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- Slide1 -->
+	<section class="slide1">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="item-slick1 item1-slick1" style="background-image: url(http://img.jammyfm.com/wordpress/wp-content/uploads/2016/06/201606031711386530.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+							Women Collection 2018
+						</span>
+
+						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+							New arrivals
+						</h2>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+							<!-- Button -->
+							<a href="http://localhost:8000/shop" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1 item2-slick1" style="background-image: url(https://i.pinimg.com/originals/11/87/1d/11871d24cc3759593c6692fb6950c4af.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
+							Men Collection 2018
+						</span>
+
+						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+							New arrivals
+						</h2>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
+							<!-- Button -->
+							<a href="http://localhost:8000/shop/" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1 item3-slick1" style="background-image: url(http://4.bp.blogspot.com/-igTwOQdADHE/VN1lLuwUjGI/AAAAAAAACRQ/ryjPFUPikA4/s1600/27363-Kids%2BFashion%2BHD%2BWallpaperz.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+							Kids Collection 2018
+						</span>
+
+						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+							New arrivals
+						</h2>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
+							<!-- Button -->
+							<a href="http://localhost:8000/shop" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Banner -->
+	<section class="banner bgwhite p-t-40 p-b-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="https://ae01.alicdn.com/kf/HTB180eLfv6H8KJjy0Fjq6yXepXau/Gigi-Lace-Up-Korea-Sweater-Women-V-neck-Winter-Solid-Cashmer-Pullovers-Female-Fashion-Brand-Hollow.jpg" alt="IMG-BENNER">
+
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Dresses
+							</a>
+						</div>
+					</div>
+
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="https://cdn.shopify.com/s/files/1/1732/2983/products/2018-Brand-Designer-Multi-Color-Square-Polarized-Sunglasses-Mens-HD-Vision-Driving-Sun-Glasses-Men-Women_2fe53758-20e7-4798-8100-5807e7dc4df2_530x.jpg?v=1529213398" alt="IMG-BENNER">
+
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Sunglasses
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="https://n1.sdlcdn.com/imgs/a/j/0/Casio-G271-G-Shock-Blue-1801286-1-9e80c.jpg">
+
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Watches
+							</a>
+						</div>
+					</div>
+
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="https://www.altonsports.co.uk/wp-content/uploads/2017/10/nike-roshe-two-flyknit-v2-black-white-918263-002-mood-3.jpg" alt="IMG-BENNER">
+
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Footerwear
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="https://www.bhphotovideo.com/images/images2500x2500/CineBags_cb_23a_CB23_DSLR_HD_874536.jpg">
+
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Bags
+							</a>
+						</div>
+					</div>
+
+					<!-- block2 -->
+					<div class="block2 wrap-pic-w pos-relative m-b-30">
+						<img src="{{path}}images/icons/bg-01.jpg" alt="IMG">
+
+						<div class="block2-content sizefull ab-t-l flex-col-c-m">
+							<h4 class="m-text4 t-center w-size3 p-b-8">
+								Sign up & get 20% off
+							</h4>
+
+							<p class="t-center w-size4">
+								Be the frist to know about the latest fashion news and get exclu-sive offers
+							</p>
+
+							<div class="w-size2 p-t-25">
+								<!-- Button -->
+								<a href="http://localhost:8000/signup" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+									Sign Up
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- New Product -->
+	<section class="newproduct bgwhite p-t-45 p-b-105">
+		<div class="container">
+			<div class="sec-title p-b-60">
+				<h3 class="m-text5 t-center">
+					Featured Products
+				</h3>
+			</div>
+
+			<!-- Slide2 -->
+			<div class="wrap-slick2">
+				<div class="slick2">
+
+
+					{% for k in  obj %}
+
+					<div class="item-slick2 p-l-15 p-r-15">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+								<img src="{{k.proimg}}" alt="IMG-PRODUCT" width="200" height="250">
+
+								<div class="block2-overlay trans-0-4">
+									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+									</a>
+
+									<div class="block2-btn-addcart w-size1 trans-0-4">
+										<!-- Button -->
+										<form id="myForm" action="http://localhost:8000/addtocart/">
+
+											<input type="hidden" name="uid" value="101" >
+											<input type="hidden" name="pid" value="{{k.pid}}">
+
+										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" onclick="sub()">
+											Add to Cart
+										</button>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="block2-txt p-t-20">
+								<center>
+								<a href="http://localhost:8000/product-detail" class="block2-name dis-block s-text3 p-b-5">
+									{{k.proname}}
+								</a>
+
+
+
+
+
+								<span class="block2-newprice m-text8 p-r-5">
+
+									 ₹{{k.proprice }}
+								</span>
+	</center>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %}
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Banner2 -->
+	<section class="banner2 bg5 p-t-55 p-b-55">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+					<div class="hov-img-zoom pos-relative">
+						<img src="https://www.fashionlady.in/wp-content/uploads/2015/12/how-to-dress-when-you-are-short.jpg" height="600" width="539px" alt="IMG-BANNER">
+
+						<div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+							<span class="m-text9 p-t-45 fs-20-sm">
+								The Beauty
+							</span>
+
+							<h3 class="l-text1 fs-35-sm">
+								Lookbook
+							</h3>
+
+							<a href="#" class="s-text4 hov2 p-t-20 ">
+								View Collection
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+					<div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
+						<img src="http://stylemann.com/wp-content/uploads/2016/12/nike-free-trainer-5.0-1-650x650.jpg" alt="IMG-BANNER" height="600px" width="539px">
+
+						<div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
+							<div class="t-center">
+								<a href="product-detail.html" class="dis-block s-text3 p-b-5">
+									Nike Sale
+								</a>
+
+								<span class="block2-oldprice m-text7 p-r-5">
+									₹6000
+								</span>
+
+								<span class="block2-newprice m-text8">
+									₹4999
+								</span>
+							</div>
+
+							<div class="flex-c-m p-t-44 p-t-30-xl">
+								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 days">
+										54
+									</span>
+
+									<span class="s-text5">
+										days
+									</span>
+								</div>
+
+								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 hours">
+										67
+									</span>
+
+									<span class="s-text5">
+										hrs
+									</span>
+								</div>
+
+								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 minutes">
+										23
+									</span>
+
+									<span class="s-text5">
+										mins
+									</span>
+								</div>
+
+								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 seconds">
+										05
+									</span>
+
+									<span class="s-text5">
+										secs
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Blog -->
+	<section class="blog bgwhite p-t-94 p-b-65">
+		<div class="container">
+			<div class="sec-title p-b-52">
+				<h3 class="m-text5 t-center">
+					Our Blog
+				</h3>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+					<!-- Block3 -->
+					<div class="block3">
+						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+							<img src="http://nextluxury.com/wp-content/uploads/casual-weekend-all-black-outfits-mens-ideas.jpg" alt="IMG-BLOG" height="300" width="250">
+						</a>
+
+						<div class="block3-txt p-t-14">
+							<h4 class="p-b-7">
+								<a href="blog-detail.html" class="m-text11">
+									Black Friday Guide: Best Sales & Discount Codes
+								</a>
+							</h4>
+
+							<span class="s-text6">By</span> <span class="s-text7">Nikalus</span>
+							<span class="s-text6">on</span> <span class="s-text7">Oct 22, 2018</span>
+
+							<p class="s-text8 p-t-16" align="center">
+								It’s that time of the year again – sales week! Black Friday seems to be more of a week-long
+								event rather than just the day anymore, as sales have started way earlier than usual. I’ve been sharing my
+								favourites over Instagram stories during the past couple of days, but I’ve compiled everything into this post
+								(sales codes, promotions, etc) and will be updating it as I discover new promos! As you can see I’ve also shared
+								my favourite purchases or those on my wish list from the top retailers to give you some inspiration.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+					<!-- Block3 -->
+					<div class="block3">
+						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+							<img src="https://cdn.cliqueinc.com/posts/242964/the-white-sneakers-nearly-every-fashion-girl-owns-2526466.640x0c.jpg" alt="IMG-BLOG"  height="300" width="250">
+						</a>
+
+						<div class="block3-txt p-t-14">
+							<h4 class="p-b-7">
+								<a href="blog-detail.html" class="m-text11">
+									The White Sneakers Nearly Every Fashion Girls Own
+								</a>
+							</h4>
+
+							<span class="s-text6">By</span> <span class="s-text7">Kol</span>
+							<span class="s-text6">on</span> <span class="s-text7">Sep 18, 2017</span>
+
+							<p class="s-text8 p-t-16" align="center">
+							You can find the once of-the-moment shoe style at nearly every brand now in a range of textures,
+								unique stitching, slightly different shapes, and a variety of price points. The sneakers are a must for
+								every woman’s shoe collection (no matter one’s personal style) since the sneaks are so versatile you can
+								wear the kicks with just about anything. Whether you style the sneakers with a pretty printed
+								dress or opt for a laid-back look like jeans and a T-shirt or leggings and cozy hoodie, there’s sure to become
+								your go-to shoes (if they aren’t already).
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+					<!-- Block3 -->
+					<div class="block3">
+						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8E0VpwRUR9rck6K8ichytl6tWfjPnkffFiVd4pg1hA5ELXaG" alt="IMG-BLOG"  height="300" width="250">
+						</a>
+
+						<div class="block3-txt p-t-14">
+							<h4 class="p-b-7">
+								<a href="blog-detail.html" class="m-text11">
+									New York SS 2018 Street Style: Exclusively available
+								</a>
+							</h4>
+
+							<span class="s-text6">By</span> <span class="s-text7">Elena</span>
+							<span class="s-text6">on</span> <span class="s-text7">July 2, 2018</span>
+
+							<p class="s-text8 p-t-16" align="center">
+								Fashion month is off to a roaring start, with editors, models, buyers and
+								bloggers descending upon the streets of New York in their finest garb for the city’s biannual fashion week.
+
+                                While the key pieces and trends for spring/summer 2019 will be showcased on the catwalks, it's what
+								show attendees wear that often
+								sets the sartorial precedent for the months ahead.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Instagram -->
+	<section class="instagram p-t-20">
+		<div class="sec-title p-b-52 p-l-15 p-r-15">
+			<h3 class="m-text5 t-center">
+				@ follow us on Instagram
+			</h3>
+		</div>
+
+		<div class="flex-w">
+			<!-- Block4 -->
+			<div class="block4 wrap-pic-w">
+				<img src="https://stylegirlfriend.com/wp-content/uploads/2017/10/b247aee7a016d7bfc416008e4f34c558-405x304.jpg" height="271" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">1000</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							The jeans looks good, the cloth is also streatchable and nice color offcourse.
+						</p>
+
+						<span class="s-text9">
+							Photo by @Matt
+						</span>
+					</div>
+				</a>
+			</div>
+
+			<!-- Block4 -->
+			<div class="block4 wrap-pic-w">
+				<img src="https://www.dhresource.com/0x0s/f2-albu-g3-M01-CF-47-rBVaHVS3d-uAbkXxAAGexWD3550834.jpg/rosalin-spring-summer-2015-women-casual-dress.jpg" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">3000</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							The package delivered at time. I thought this was a great
+							way to ship the dress and I was super excited to dress.
+						</p>
+
+						<span class="s-text9">
+							Photo by @Bony
+						</span>
+					</div>
+				</a>
+			</div>
+
+			<!-- Block4 -->
+			<div class="block4 wrap-pic-w">
+				<img src="https://my-test-11.slatic.net/p/7/spring-autumn-mens-sneakers-2017-men-running-shoes-trending-style-sports-shoes-breathable-trainers-sneakers-black-7376-15702491-97342c18d957467f7a7b6068b36895f4-catalog.jpg_340x340q80.jpg_.webp" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">2500</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							The Shoes are a daily trainer for the urban runner who
+							splits time across the gym and long outdoor runs who doesn’t mind a few quirks for a stylish
+						</p>
+
+						<span class="s-text9">
+							Photo by @Elijah
+						</span>
+					</div>
+				</a>
+			</div>
+
+			<!-- Block4 -->
+			<div class="block4 wrap-pic-w">
+				<img src="https://amp.thisisinsider.com/images/5b1a8a225e48ec19008b4571-750-563.jpg" height="271" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">7000</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							If you need glasses that can take a beating and still follow you in day to day life, this is probably your best bet.
+						</p>
+
+						<span class="s-text9">
+							Photo by @Kelly
+						</span>
+					</div>
+				</a>
+			</div>
+
+			<!-- Block4 -->
+			<div class="block4 wrap-pic-w">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-pvB0cBsuiIp7QZi8njo-uvW2xDafz1uMb74pBLO2dy0u7qg_"  height="271" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">1200</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							This is one of the most epic bags in the market….
+							but we only recommend this bag for certain types of travelers. This Bag is ideal for some travelers,
+							and NOT ideal for others.
+						</p>
+
+						<span class="s-text9">
+							Photo by @Jean
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Shipping -->
+	<section class="shipping bgwhite p-t-62 p-b-46">
+		<div class="flex-w p-l-15 p-r-15">
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+				<h4 class="m-text12 t-center">
+					Free Delivery Worldwide
+				</h4>
+
+				<a href="#" class="s-text11 t-center">
+					Click here for more info
+				</a>
+			</div>
+
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+				<h4 class="m-text12 t-center">
+					30 Days Return
+				</h4>
+
+				<span class="s-text11 t-center">
+					Simply return it within 30 days for an exchange.
+				</span>
+			</div>
+
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+				<h4 class="m-text12 t-center">
+					Store Opening
+				</h4>
+
+				<span class="s-text11 t-center">
+					Shop open from Monday to Sunday
+				</span>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+		<div class="flex-w p-b-90">
+			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					GET IN TOUCH
+				</h4>
+
+				<div>
+					<p class="s-text7 w-size27">
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+					</p>
+
+					<div class="flex-m p-t-30">
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Categories
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Men
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Women
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Dresses
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Sunglasses
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Links
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Search
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							About Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Contact Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Help
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Track Order
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Shipping
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							FAQs
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					Newsletter
+				</h4>
+
+				<form>
+					<div class="effect1 w-size9">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+						<span class="effect1-line"></span>
+					</div>
+
+					<div class="w-size2 p-t-20">
+						<!-- Button -->
+						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+							Subscribe
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="t-center p-l-15 p-r-15">
+			<a href="#">
+				<img class="h-size2" src="{{path}}images/icons/paypal.png" alt="IMG-PAYPAL">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{{path}}images/icons/visa.png" alt="IMG-VISA">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{{path}}images/icons/mastercard.png" alt="IMG-MASTERCARD">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{{path}}images/icons/express.png" alt="IMG-EXPRESS">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{{path}}images/icons/discover.png" alt="IMG-DISCOVER">
+			</a>
+
+			<div class="t-center s-text8 p-t-20">
+				Copyright © 2018 All rights reserved.
+			</div>
+		</div>
+	</footer>
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection1 -->
+	<div id="dropDownSelect1"></div>
+
+
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="{{path}}vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/select2/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="{{path}}js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{path}}vendor/sweetalert/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		$('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+
+		  function sub()
+	    {
+
+	      document.getElementById("myForm").submit();
+		}
+	</script>
+<!--===============================================================================================-->
+	<script src="{{path}}js/main.js"></script>
+
+</body>
+</html>
